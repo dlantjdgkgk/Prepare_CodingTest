@@ -3,7 +3,7 @@ function solution(array, commands) {
     let answer = [];
     for (let i = 0; i < commands.length; i++) {
         answer = array.slice(commands[i][0] - 1, commands[i][1]);
-        answer = answer.sort();
+        answer = answer.sort((a, b) => a - b);
         result[i] = answer[commands[i][2] - 1];
     }
     return result;
