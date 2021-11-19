@@ -12,6 +12,8 @@ function solution(participant, completion) {
 
 let participant = ['mislav', 'stanko', 'mislav', 'ana'];
 let completion = ['stanko', 'ana', 'mislav'];
+console.log(participant.sort());
+console.log(completion.sort());
 console.log(solution(participant, completion));
 
 // Array.prototype.sort()
