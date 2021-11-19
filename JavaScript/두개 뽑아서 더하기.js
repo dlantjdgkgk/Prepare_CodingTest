@@ -1,8 +1,9 @@
-function solution(numbers) {
+// 방법 1 indexOf 사용
+function solution2(number) {
     let answer = [];
-    for (let i = 0; i < numbers.length; i++) {
-        for (let j = i + 1; j < numbers.length; j++) {
-            let sum = numbers[i] + numbers[j];
+    for (let i = 0; i < number.length - 1; i++) {
+        for (let j = i + 1; j < number.length; j++) {
+            let sum = number[i] + number[j];
             if (answer.indexOf(sum) === -1) {
                 answer.push(sum);
             }
@@ -13,11 +14,33 @@ function solution(numbers) {
     });
     return answer;
 }
-let numbers = [2, 1, 3, 4, 1];
+
+let number = [2, 1, 3, 4, 1];
+console.log(solution(number));
+
+// 방법 1 find 사용 => find 사용할때는 0이 false 이기 때문에 0을 반복해서 출력하지 않기 위해서
+// != undefined 조건을 걸어 놓는다.
+function solution(numbers) {
+    let answer = [];
+    let sum = 0;
+    for (let i = 0; i < numbers.length - 1; i++) {
+        for (let j = i + 1; j < numbers.length; j++) {
+            sum = numbers[i] + numbers[j];
+            if (answer.find((item) => item === sum) != undefined) continue;
+            answer.push(sum);
+        }
+    }
+    answer.sort((a, b) => {
+        return a - b;
+    });
+    return answer;
+}
+let numbers = [0, 0, 0, 2, 1, 3, 4, 1];
 console.log(solution(numbers));
 
 // indexOf() 메서드는 배열에서 지정된 요소를 찾을 수 있는 첫 번째 인덱스를 반환하고 존재하지 않으면 -1을 반환합니다.
 // arr.indexOf(searchElement[, fromIndex])
+// indexOf 메서드를 이용해 answer 배열에 내가 구한 합이 없다면 그 수를 담았다.
 
 // let array = [2, 7, 9];
 // console.log(array.indexOf(2)); // 0
